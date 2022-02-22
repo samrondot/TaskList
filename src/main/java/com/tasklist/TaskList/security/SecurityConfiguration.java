@@ -33,13 +33,15 @@ protected void configure(AuthenticationManagerBuilder auth) throws Exception {
 	@Override
 		protected void configure(HttpSecurity http) throws Exception {
 			http
-				.csrf().disable()
 				.authorizeRequests()
 				.antMatchers("/admin/**").hasAnyRole("ADMIN")
+				.antMatchers("/register").permitAll()
 				.anyRequest().hasAnyRole("USER").and()
 				.formLogin()
 					.loginPage("/login")
 					.defaultSuccessUrl("/dashboard")
 					.permitAll();
+			
+			
 	}
 }
