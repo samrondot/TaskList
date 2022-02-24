@@ -1,20 +1,24 @@
 package com.tasklist.TaskList.security;
 
 import org.springframework.security.core.userdetails.UserDetails;
+import org.springframework.security.crypto.bcrypt.BCryptPasswordEncoder;
+import org.springframework.security.crypto.password.PasswordEncoder;
 
 import com.tasklist.TaskList.domain.User;
 
 public class CustomSecurityUser extends User implements UserDetails	{
 
 	private static final long serialVersionUID = 7371597053175471667L;
-
+	
 	public CustomSecurityUser() {}
 	
 	public CustomSecurityUser(User user) {
+		
+		PasswordEncoder passwordEncoder = new BCryptPasswordEncoder();
+		this.setPassword(passwordEncoder.encode(user.getPassword()));
 		this.setAuthorities(user.getAuthorities());
 		this.setUserId(user.getUserId());
 		this.setDepartment(user.getDepartment());
-		this.setPassword(user.getPassword());
 		this.setUsername(user.getUsername());
 		this.setTasks(user.getTasks());
 	}

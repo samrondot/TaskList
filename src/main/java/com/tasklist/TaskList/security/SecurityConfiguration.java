@@ -35,6 +35,8 @@ protected void configure(AuthenticationManagerBuilder auth) throws Exception {
 			http
 				.authorizeRequests()
 				.antMatchers("/admin/**").hasAnyRole("ADMIN")
+				.antMatchers("/src/main/resources/**").permitAll()
+                .antMatchers("/js/*.js").permitAll()
 				.antMatchers("/register").anonymous()
 				.anyRequest().hasAnyRole("USER").and()
 				.formLogin()
