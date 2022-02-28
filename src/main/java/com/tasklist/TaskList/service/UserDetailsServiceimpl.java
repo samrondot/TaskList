@@ -7,6 +7,7 @@ import org.springframework.security.core.userdetails.UsernameNotFoundException;
 import org.springframework.stereotype.Service;
 
 import com.tasklist.TaskList.domain.User;
+import com.tasklist.TaskList.dto.UserDto;
 import com.tasklist.TaskList.repository.UserRepository;
 import com.tasklist.TaskList.security.CustomSecurityUser;
 

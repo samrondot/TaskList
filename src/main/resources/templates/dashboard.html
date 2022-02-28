@@ -6,11 +6,20 @@
 	</head>
 		<h1>Dashboard</h1>
 		<h2>Welcome, [[${user.username}]]</h2>
-<body>
-	<form method = "post" action = "/logout">
-	<input type = "hidden" th:name = "${_csrf.parameterName	}" th:value = "${_csrf.token}"/>
-	<button type = "submit">Logout</button>
-	</form>
-</body>
+			<body>
+			
+			<a th:href="@{createTask/{userId}(userId=${user.userId})}">
+   			 <button>Create New Task</button>
+			</a>
+			
+	
+			<form method = "post" action = "/logout">
+				<input type = "hidden" th:name = "${_csrf.parameterName	}" th:value = "${_csrf.token}"/>
+				<button type = "submit">Logout</button>
+			</form>
+			
+	
+	
+			</body>
 
 </html>

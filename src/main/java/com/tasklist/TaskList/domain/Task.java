@@ -16,8 +16,8 @@ public class Task {
 	private Long taskId;
 	private String details;
 	private LocalDateTime detailDate;
+	private String assignedDept;
 	private User user;
-	private String userComment;
 	
 	@Id
 	@GeneratedValue(strategy = GenerationType.IDENTITY)
@@ -38,6 +38,13 @@ public class Task {
 	}
 	public void setDetailDate(LocalDateTime detailDate) {
 		this.detailDate = detailDate;
+		
+	}
+	public String getAssignedDept() {
+		return assignedDept;
+	}
+	public void setAssignedDept(String assignedDept) {
+		this.assignedDept = assignedDept;
 	}
 	@ManyToOne
 	@JoinColumn(name = "user_id")
@@ -47,12 +54,4 @@ public class Task {
 	public void setUser(User user) {
 		this.user = user;
 	}
-	public String getUserComment() {
-		return userComment;
-	}
-	public void setUserComment(String userComment) {
-		this.userComment = userComment;
-	}
-	
-	
 }

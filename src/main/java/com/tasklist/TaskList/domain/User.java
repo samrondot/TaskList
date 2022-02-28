@@ -5,6 +5,7 @@ import java.util.HashSet;
 import java.util.List;
 import java.util.Set;
 import javax.persistence.CascadeType;
+import javax.persistence.Column;
 import javax.persistence.Entity;
 import javax.persistence.FetchType;
 import javax.persistence.GeneratedValue;
@@ -29,6 +30,7 @@ public class User {
 	public void setUserId(Long userId) {
 		this.userId = userId;
 	}
+	@Column(unique = true)
 	public String getUsername() {
 		return username;
 	}

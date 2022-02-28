@@ -4,7 +4,9 @@
 	<title>Register</title>
 </head>
 <body>
+	
 	<form action = "/register" method = "post">
+	
 	<input type = "hidden" th:name = "${_csrf.parameterName}" th:value="${_csrf.token}"/>
 		<div>
 			Enter your email: <input type = "text" id = "usernameTxtBox" th:field = "${user.username}">
@@ -12,10 +14,19 @@
 		<div>
 			Enter your password: <input type = "password" id = "password" th:field = "${user.password}"/>
 		</div>
+		<label for="user">I am a:</label>
+			<select th:field="*{user.department}">
+    			<option value="management">Management</option>
+  				<option value="IT">IT</option>
+  				<option value="maintenance">Maintenance</option>
+  				<option value="guest">guest</option>
+  				<option th:each="dept : ${user.department}" th:value="${user.department}" th:field="${user.department}"></option>
+			</select>
 	
 		<input type = "submit" id = "submitBtn" value = "Create Account"/>
 	</form>
-	<script type = "text/javascript" src = "/js/register.js" ></script>
 	
+	<script type = "text/javascript" src = "/js/register.js" ></script>
+ ​    <script th:inline ="javascript">var token = /*[[${_csrf.token}]]*/''</script>   
 </body>
 </html>

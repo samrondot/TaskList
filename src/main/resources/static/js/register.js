@@ -1,27 +1,30 @@
 var submitBtn = document.querySelector('#submitBtn')
-var usernameTextBox = document.querySelector('#usernameTxtBox')
+var usernameTextBox = document.querySelector('#usernameTxtBox');
 var password = document.querySelector('#password')
-alert('hello')
 
-usernameTextBox.addEventListener('blur', () => {
-	var user = {
+
+submitBtn.addEventListener('click', () => {
+	let user = {
+			
 			'username': usernameTextBox.value,
 			'password': password.value
+			
 	}
 	console.log(user)
-	fetch('/exists', {
+	fetch(`/exists`, {
 		method: 'POST',
 		headers: {
-			"X-CSRF-TOKEN": token,
-			'Content-Type': 'application/json'
+			"Content-Type": "application/json",
+			'X-CSRF-TOKEN': token
 		},
 		body: JSON.stringify(user)
 	})
-	.then( (responseEntity) => responseEntity )
+	.then((responseEntity) => responseEntity.json())
 	.then( (data) => {
-		if (data===true) {
-			// this users already exists!
-			console.log("username already exists")
+		if (data===false) {
+			// this user already exists!
+			alert("username already exists")
+			window.location = "/register"
 			usernameTextBox.focus()
 			usernameTextBox.select()
 		} 
