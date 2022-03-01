@@ -1,5 +1,6 @@
 package com.tasklist.TaskList.domain;
 
+import java.time.LocalDate;
 import java.time.LocalDateTime;
 
 import javax.persistence.Entity;
@@ -15,7 +16,7 @@ import javax.persistence.Table;
 public class Task {
 	private Long taskId;
 	private String details;
-	private LocalDateTime detailDate;
+	private LocalDate detailDate;
 	private String assignedDept;
 	private User user;
 	
@@ -33,10 +34,10 @@ public class Task {
 	public void setDetails(String details) {
 		this.details = details;
 	}
-	public LocalDateTime getDetailDate() {
+	public LocalDate getDetailDate() {
 		return detailDate;
 	}
-	public void setDetailDate(LocalDateTime detailDate) {
+	public void setDetailDate(LocalDate detailDate) {
 		this.detailDate = detailDate;
 		
 	}
@@ -54,4 +55,5 @@ public class Task {
 	public void setUser(User user) {
 		this.user = user;
 	}
+	
 }
