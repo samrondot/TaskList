@@ -19,6 +19,7 @@ public class User {
 	private String username;
 	private String password;
 	private String department;
+	private List<Message> messages = new ArrayList<>();
 	private List<Task> tasks = new ArrayList<>();
 	private Set<Authorities> authorities = new HashSet<>();
 		
@@ -48,6 +49,14 @@ public class User {
 	}
 	public void setDepartment(String department) {
 		this.department = department;
+	}
+	 
+	@OneToMany(mappedBy = "user", cascade = CascadeType.ALL, orphanRemoval = true)
+	public List<Message> getMessages() {
+		return messages;
+	}
+	public void setMessages(List<Message> messages) {
+		this.messages = messages;
 	}
 	@OneToMany(mappedBy= "user")
 	public List<Task> getTasks() {

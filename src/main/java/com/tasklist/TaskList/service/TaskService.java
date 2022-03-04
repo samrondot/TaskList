@@ -35,5 +35,12 @@ public class TaskService {
 	public Task findById(Long taskId) {
 		return taskRepo.getById(taskId);
 	}
+
+	public void saveTask(Task task) {
+		taskRepo.save(task);
+		
+	}
+
+	
 	
 }

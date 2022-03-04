@@ -27,7 +27,8 @@ submitBtn.addEventListener('click', () => {
 			window.location = "/register"
 			usernameTextBox.focus()
 			usernameTextBox.select()
-		} 
+		}
+		sessionStorage.setItem("user",JSON.stringify(user))
 	})
 })
 

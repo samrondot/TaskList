@@ -39,7 +39,10 @@ protected void configure(AuthenticationManagerBuilder auth) throws Exception {
 				.antMatchers("/createTask").permitAll()
 				.antMatchers("/src/main/resources/**").permitAll()
                 .antMatchers("/js/*.js").permitAll()
-				.antMatchers("/register").anonymous()
+				.antMatchers("/register").permitAll()
+				.antMatchers("/messageSent").permitAll()
+				.antMatchers("/obtainMessages").permitAll()
+				
 				.anyRequest().hasAnyRole("USER").and()
 				.formLogin()
 					.loginPage("/login")

@@ -40,6 +40,10 @@ public class UserService {
 	public User findById(Long userId) {
 		return userRepo.findByUserId(userId);
 	}
+
+	public User findByUsername(String user) {
+		return userRepo.findByUsername(user);
+	}
 	
 		
 
