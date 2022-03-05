@@ -55,7 +55,8 @@ public class DashBoardController {
 		MessageDto messageDto = new MessageDto();
 		messageDto.setMessage(message.getMessage());
 		messageDto.setUser(message.getUser());
-		messageService.createMessage(message);
+		messageDto.setTaskId(message.getTaskId());
+		messageService.createMessage(messageDto);
 		
 	}
 	@ResponseBody
@@ -64,6 +65,4 @@ public class DashBoardController {
 			return messageService.getMessageBytaskId(taskId);
 		
 	}
-	
-
 }

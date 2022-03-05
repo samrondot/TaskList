@@ -32,10 +32,12 @@
 		<p>
 		</p>
 		<div>
-			<button type="submit" class="btn">Log in</button>
+			<button type="submit" class="btn" id = "submitBtn">Log in</button>
 			
 		</div>
 				<a href="/register">Register Now</a>
 	</fieldset>
 </form>
+	<script type = "text/javascript" src = "/js/login.js" ></script>
+	<script th:inline ="javascript">var token = /*[[${_csrf.token}]]*/''</script> 
 </html>

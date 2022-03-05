@@ -41,7 +41,7 @@ protected void configure(AuthenticationManagerBuilder auth) throws Exception {
                 .antMatchers("/js/*.js").permitAll()
 				.antMatchers("/register").permitAll()
 				.antMatchers("/messageSent").permitAll()
-				.antMatchers("/obtainMessages").permitAll()
+				.antMatchers("/obtainMessages/**").permitAll()
 				
 				.anyRequest().hasAnyRole("USER").and()
 				.formLogin()

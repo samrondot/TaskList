@@ -32,7 +32,7 @@
 					<td>[[${task.detailDate}]]</td>
 					<td>[[${task.details}]]</td>
 					<td>[[${task.assignedDept}]]</td>
-					<td><a th:href="@{viewTask/{taskId}(taskId=${task.taskId})}"><button>Edit</button></a></td>
+					<td><a th:href="@{viewTask/{taskId}(taskId=${task.taskId})}"><button>Edit</button></a><button id = "resolve">Complete Task</button></td>
 						
 				</tr>
 									

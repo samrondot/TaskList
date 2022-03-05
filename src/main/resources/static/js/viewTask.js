@@ -1,23 +1,26 @@
 var sendMessage = document.querySelector("#submitBtn")
+var textBox = document.querySelector("#comment")
 const queryString = window.location.href;
+var url = window.location.pathname;
 let taskId = queryString.substring(queryString.lastIndexOf("/") +1, queryString.length)
+var id = url.substring(url.lastIndexOf('/'))
 var user = JSON.parse(
 sessionStorage.getItem("user"))
 console.log(user)
 
 sendMessage.addEventListener('click',() => {
 	let newMessage = {
-		message: sendMessage.value,
-		user: user,
+		message: textBox.value,
+		user: user.userId,
 		taskId: taskId
 		
 	}	
-
-	sendMessage.value = "",
+	textBox.value = "",
 	fetch('/messageSent',{
 		method: 'POST',
 		headers: {
-			"Content-Type": "application/JSON"
+			"Content-Type": "application/JSON",
+			'X-CSRF-TOKEN': token
 		},
 		body: JSON.stringify(newMessage)
 	})
@@ -27,10 +30,11 @@ sendMessage.addEventListener('click',() => {
 		})})
 		
 function getMessages(){
-	fetch('/obtainMessages/'+taskId,{
+	fetch('/obtainMessages'+id,{
 		method: 'POST',
 		headers:{
-			"Content-Type": "application/JSON"
+			"Content-Type": "application/JSON",
+			'X-CSRF-TOKEN': token
 		},
 	})
 		.then((response) => response.json())
@@ -48,7 +52,7 @@ function displayMessages(messages){
 			mainContainer.innerHTML = "";
 		for(var i = 0; i < messages.length; i++){
 			var div = document.createElement("div");
-			div.innerHTML = messages[i].username + ' : ' + messages[i].message;
+			div.innerHTML = user + ' : ' + messages[i].message;
 				mainContainer.appendChild(div)
 				console.log(messages[i])
 		}

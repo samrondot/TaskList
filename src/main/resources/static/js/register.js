@@ -28,7 +28,6 @@ submitBtn.addEventListener('click', () => {
 			usernameTextBox.focus()
 			usernameTextBox.select()
 		}
-		sessionStorage.setItem("user",JSON.stringify(user))
 	})
 })
 

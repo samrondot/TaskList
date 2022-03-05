@@ -25,6 +25,7 @@ private TaskService taskService;
 		Message newMessage = new Message();
 		Task task = taskService.findById(message.getTaskId());
 		User user = userService.findByUsername(message.getUser());
+		System.out.println(user);
 		newMessage.setMessageContent(message.getMessage());
 		newMessage.setUser(user);
 		newMessage.setTask(task);
@@ -36,9 +37,10 @@ private TaskService taskService;
 		List<MessageDto> messagesDto = new ArrayList<>();
 		for (Message message:messageList) {
 			MessageDto messageDto = new MessageDto();
+			User user = new User();
 			messageDto.setTaskId(message.getTask().getTaskId());
 			messageDto.setMessage(message.getMessageContent());
-			messageDto.setUser(message.getUser().getUsername());
+			messageDto.setUser(user.getUsername());
 			messagesDto.add(messageDto);
 		}
 		return messagesDto;
