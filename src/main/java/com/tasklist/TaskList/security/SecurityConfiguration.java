@@ -42,7 +42,7 @@ protected void configure(AuthenticationManagerBuilder auth) throws Exception {
 				.antMatchers("/register").permitAll()
 				.antMatchers("/messageSent").permitAll()
 				.antMatchers("/obtainMessages/**").permitAll()
-				
+				.antMatchers("/delete/**").anonymous()
 				.anyRequest().hasAnyRole("USER").and()
 				.formLogin()
 					.loginPage("/login")

@@ -2,6 +2,8 @@ package com.tasklist.TaskList.service;
 
 import java.time.LocalDate;
 import java.util.List;
+import java.util.Optional;
+
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 import com.tasklist.TaskList.domain.Task;
@@ -38,6 +40,15 @@ public class TaskService {
 
 	public void saveTask(Task task) {
 		taskRepo.save(task);
+		
+	}
+
+	public void delete(Long taskId, Long userId) {
+		
+		Task task = taskRepo.findByTaskId(taskId);
+		System.out.println(task);
+		taskRepo.delete(task);
+		
 		
 	}
 

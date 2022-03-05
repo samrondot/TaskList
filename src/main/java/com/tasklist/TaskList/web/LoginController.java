@@ -47,7 +47,6 @@ public class LoginController {
 		UserDto userDto = new UserDto();
 		userDto.setPassword(user.getPassword());
 		userDto.setUsername(user.getUsername());
-		System.out.println("hello");
 		System.out.println(userService.checkIfUserExists(userDto.getUsername()));
 		return(userService.checkIfUserExists(userDto.getUsername()));
 		

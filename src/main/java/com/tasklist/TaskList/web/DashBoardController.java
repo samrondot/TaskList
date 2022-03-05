@@ -4,7 +4,9 @@ import java.util.List;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.security.core.annotation.AuthenticationPrincipal;
 import org.springframework.stereotype.Controller;
+import org.springframework.ui.Model;
 import org.springframework.ui.ModelMap;
+import org.springframework.validation.BindingResult;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.PostMapping;
@@ -64,5 +66,11 @@ public class DashBoardController {
 		private List<MessageDto> obtainMessages(@PathVariable Long taskId) {
 			return messageService.getMessageBytaskId(taskId);
 		
+	}
+	@PostMapping("/delete/{taskId}/{userId}")
+		private String deleteTask(@PathVariable Long taskId, @PathVariable Long userId) {
+		taskService.delete(taskId, userId);
+		System.out.println("hello");
+		return "redirect:/dashboard";
 	}
 }
