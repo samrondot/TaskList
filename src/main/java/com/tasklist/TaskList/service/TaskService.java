@@ -46,7 +46,6 @@ public class TaskService {
 	public void delete(Long taskId, Long userId) {
 		
 		Task task = taskRepo.findByTaskId(taskId);
-		System.out.println(task);
 		taskRepo.delete(task);
 		
 		

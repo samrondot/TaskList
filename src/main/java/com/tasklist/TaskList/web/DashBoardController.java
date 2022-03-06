@@ -16,6 +16,7 @@ import com.tasklist.TaskList.domain.Message;
 import com.tasklist.TaskList.domain.Task;
 import com.tasklist.TaskList.domain.User;
 import com.tasklist.TaskList.dto.MessageDto;
+import com.tasklist.TaskList.dto.TaskDto;
 import com.tasklist.TaskList.service.MessageService;
 import com.tasklist.TaskList.service.TaskService;
 import com.tasklist.TaskList.service.UserDetailsServiceimpl;
@@ -59,7 +60,6 @@ public class DashBoardController {
 		messageDto.setUser(message.getUser());
 		messageDto.setTaskId(message.getTaskId());
 		messageService.createMessage(messageDto);
-		
 	}
 	@ResponseBody
 	@PostMapping("/obtainMessages/{taskId}")
@@ -67,10 +67,19 @@ public class DashBoardController {
 			return messageService.getMessageBytaskId(taskId);
 		
 	}
-	@PostMapping("/delete/{taskId}/{userId}")
+	@PostMapping("/delete/{userId}/{taskId}")
 		private String deleteTask(@PathVariable Long taskId, @PathVariable Long userId) {
 		taskService.delete(taskId, userId);
 		System.out.println("hello");
 		return "redirect:/dashboard";
 	}
+	@ResponseBody
+	@PostMapping("/matchDepartment")
+		private Boolean matchesDepartment(@RequestBody TaskDto taskDto) {
+			
+			Task task = taskService.findById(taskDto.getTaskId());
+			User user = userService.findByUsername(taskDto.getUsername());
+			System.out.println(user.getUsername());
+			return (task.getAssignedDept() == user.getDepartment());
+}
 }
