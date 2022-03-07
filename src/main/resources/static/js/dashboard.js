@@ -1,14 +1,13 @@
 var submitBtn = document.querySelector('#resolve')
-var user = sessionStorage.getItem("user")
+var user = JSON.parse(sessionStorage.getItem("user"))
 
-submitBtn.addEventListener('mouseover', () => {
+submitBtn.addEventListener('click', () => {
 	let userObj = {
-			username: user.value,
 			taskId: taskId
 	}
 	console.log(taskId)
 	console.log(user)
-	fetch(`/matchDepartment`, {
+	fetch("/matchDepartment", {
 		method: 'POST',
 		headers: {
 			"Content-Type": "application/json",
@@ -16,11 +15,12 @@ submitBtn.addEventListener('mouseover', () => {
 		},
 		body: JSON.stringify(userObj)
 	})
+	
 	.then((responseEntity) => responseEntity.json())
 	.then( (data) => {
-		if (data===true) {
+		if (data===false) {
 			// this user already exists!
-			alert("username already exists")
+			alert("You must be in the same department as the task's assigned department")
 			window.location = "/dashboard"
 			
 		}

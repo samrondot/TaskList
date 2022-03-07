@@ -1,6 +1,7 @@
 package com.tasklist.TaskList.service;
 
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.security.crypto.password.PasswordEncoder;
 import org.springframework.stereotype.Service;
 import com.tasklist.TaskList.domain.Authorities;
 import com.tasklist.TaskList.domain.User;
@@ -13,6 +14,8 @@ public class UserService {
 	private UserRepository userRepo;
 	@Autowired
 	private AuthorityRepository authRepo;
+	@Autowired
+	PasswordEncoder passwordEncoder;
 	
 	public void createUser(User user) {
 		Authorities authority = new Authorities();

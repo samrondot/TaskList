@@ -58,7 +58,7 @@ public class User {
 	public void setMessages(List<Message> messages) {
 		this.messages = messages;
 	}
-	@OneToMany(mappedBy= "user")
+	@OneToMany(mappedBy= "user",  cascade = CascadeType.ALL, orphanRemoval = true)
 	public List<Task> getTasks() {
 		return tasks;
 	}

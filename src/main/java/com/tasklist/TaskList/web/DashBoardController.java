@@ -1,6 +1,8 @@
 package com.tasklist.TaskList.web;
 
 import java.util.List;
+
+import org.hibernate.internal.build.AllowSysOut;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.security.core.annotation.AuthenticationPrincipal;
 import org.springframework.stereotype.Controller;
@@ -76,10 +78,15 @@ public class DashBoardController {
 	@ResponseBody
 	@PostMapping("/matchDepartment")
 		private Boolean matchesDepartment(@RequestBody TaskDto taskDto) {
-			
+			System.out.println(taskDto.getTaskId());
 			Task task = taskService.findById(taskDto.getTaskId());
-			User user = userService.findByUsername(taskDto.getUsername());
-			System.out.println(user.getUsername());
-			return (task.getAssignedDept() == user.getDepartment());
-}
+			System.out.println(task.getAssignedDept());
+			User user = userService.findById(task.getUser().getUserId());
+			System.out.println(user.getDepartment());
+			if(task.getAssignedDept().equals(user.getDepartment())) {
+				return true;
+			}else {
+				return false;
+			}
+}	
 }

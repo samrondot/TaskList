@@ -19,15 +19,11 @@ public class TaskService {
 	private TaskRepository taskRepo;
 
 	public void createTask(Task task, User user) {
-		Task newTask = new Task();	
 		LocalDate rightNow = LocalDate.now();
-		newTask.setAssignedDept(task.getAssignedDept());
-		newTask.setDetailDate(rightNow);
-		newTask.setDetails(task.getDetails());
-		newTask.setUser(user);
-		user.getTasks().add(newTask);
+		task.setDetailDate(rightNow);
+		task.setUser(user);
+		user.getTasks().add(task);
 		userRepo.save(user);
-		taskRepo.save(newTask);
 	}
 
 	public List<Task> getAllTasks() {
@@ -46,7 +42,13 @@ public class TaskService {
 	public void delete(Long taskId, Long userId) {
 		
 		Task task = taskRepo.findByTaskId(taskId);
-		taskRepo.delete(task);
+		User user = userRepo.findByUserId(userId);
+		if(user.getDepartment().equals(task.getAssignedDept())) {
+			taskRepo.delete(task);
+		}else {
+			System.out.println(user.getDepartment() + " does not equal " + task.getAssignedDept());
+		}
+		
 		
 		
 	}

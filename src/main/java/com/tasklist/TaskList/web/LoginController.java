@@ -59,8 +59,9 @@ public class LoginController {
 		model.put("user", user);
 		return "newtask";
 	}
-	@PostMapping("/createTask")
-	public String createNewTask( User user, Task task) {
+	@PostMapping("/createTask/{userId}")
+	public String createNewTask(@PathVariable Long userId, Task task) {
+		User user = userService.findById(userId);
 		taskService.createTask(task, user);
 		return "redirect:/dashboard";
 	
