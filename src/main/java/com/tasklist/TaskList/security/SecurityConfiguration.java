@@ -39,6 +39,7 @@ protected void configure(AuthenticationManagerBuilder auth) throws Exception {
 				.antMatchers("/createTask/**").permitAll()
 				.antMatchers("/src/main/resources/**").permitAll()
                 .antMatchers("/js/*.js").permitAll()
+                .antMatchers("/css/*.css").permitAll()
 				.antMatchers("/register").permitAll()
 				.antMatchers("/messageSent").permitAll()
 				.antMatchers("/obtainMessages/**").permitAll()		

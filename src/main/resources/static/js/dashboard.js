@@ -1,5 +1,5 @@
 var submitBtn = document.querySelector('#resolve')
-var user = JSON.parse(sessionStorage.getItem("user"))
+var user = sessionStorage.getItem("user")
 
 submitBtn.addEventListener('click', () => {
 	let userObj = {

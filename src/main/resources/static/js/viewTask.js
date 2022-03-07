@@ -4,8 +4,7 @@ const queryString = window.location.href;
 var url = window.location.pathname;
 let taskId = queryString.substring(queryString.lastIndexOf("/") +1, queryString.length)
 var id = url.substring(url.lastIndexOf('/'))
-var user = JSON.parse(
-sessionStorage.getItem("user"))
+var user = sessionStorage.getItem("user")
 console.log(user)
 
 sendMessage.addEventListener('click',() => {

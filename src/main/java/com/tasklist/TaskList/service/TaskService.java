@@ -8,6 +8,7 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 import com.tasklist.TaskList.domain.Task;
 import com.tasklist.TaskList.domain.User;
+import com.tasklist.TaskList.email.EmailSenderService;
 import com.tasklist.TaskList.repository.TaskRepository;
 import com.tasklist.TaskList.repository.UserRepository;
 
@@ -17,6 +18,8 @@ public class TaskService {
 	private UserRepository userRepo;
 	@Autowired
 	private TaskRepository taskRepo;
+	@Autowired
+	private EmailSenderService emailSender;
 
 	public void createTask(Task task, User user) {
 		LocalDate rightNow = LocalDate.now();
@@ -24,7 +27,12 @@ public class TaskService {
 		task.setUser(user);
 		user.getTasks().add(task);
 		userRepo.save(user);
+		emailSender.SendEmail(user.getUsername(), "A Task Has Been Created", "A Task has been created"
+				+ " by " + user.getUsername());
+		
 	}
+	
+	
 
 	public List<Task> getAllTasks() {
 		return taskRepo.findAll();
@@ -47,12 +55,6 @@ public class TaskService {
 			taskRepo.delete(task);
 		}else {
 			System.out.println(user.getDepartment() + " does not equal " + task.getAssignedDept());
-		}
-		
-		
-		
-	}
-
-	
-	
+		}	
+	}	
 }
