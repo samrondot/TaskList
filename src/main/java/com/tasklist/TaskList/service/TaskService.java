@@ -31,9 +31,6 @@ public class TaskService {
 				+ " by " + user.getUsername());
 		
 	}
-	
-	
-
 	public List<Task> getAllTasks() {
 		return taskRepo.findAll();
 	}

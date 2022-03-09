@@ -68,17 +68,12 @@ public class DashBoardController {
 		private List<MessageDto> obtainMessages(@PathVariable Long taskId) {
 			return messageService.getMessageBytaskId(taskId);
 		
-	}
-	@PostMapping("/delete/{userId}/{taskId}")
-		private String deleteTask(@PathVariable Long taskId, @PathVariable Long userId) {
-		taskService.delete(taskId, userId);
-		System.out.println("hello");
-		return "redirect:/dashboard";
-	}
+	}	
 	@ResponseBody
 	@PostMapping("/matchDepartment")
 		private Boolean matchesDepartment(@RequestBody TaskDto taskDto) {
 			System.out.println(taskDto.getTaskId());
+			System.out.println("Inside matchDept");
 			Task task = taskService.findById(taskDto.getTaskId());
 			System.out.println(task.getAssignedDept());
 			User user = userService.findById(task.getUser().getUserId());
@@ -88,5 +83,12 @@ public class DashBoardController {
 			}else {
 				return false;
 			}
-}	
+}
+	@PostMapping("/delete/{userId}/{taskId}")
+		private String deleteTask(@PathVariable Long taskId, @PathVariable Long userId) {
+		taskService.delete(taskId, userId);
+		System.out.println("hello");
+		return "redirect:/dashboard";
+	}
+	
 }

@@ -1,14 +1,14 @@
 .div-pad {
 	margin-top : 10px;
+	display: block;
 }
 
-#username {
-	background-color: blue
-}
-#password {
-	background-color: yellow
-}
 
-#submitBtn {
-	background-color: blue;
+#submitBtn{
+	padding: 5px;
+	color : white;
+	background-color: #00CED1;
+}
+#register{
+	font-weight: bold;
 }

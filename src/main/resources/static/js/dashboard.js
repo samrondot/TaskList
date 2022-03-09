@@ -1,13 +1,15 @@
-var submitBtn = document.querySelector('#resolve')
+var submitBtn = document.getElementById("resolve")
 var user = sessionStorage.getItem("user")
+
 
 submitBtn.addEventListener('click', () => {
 	let userObj = {
-			taskId: taskId
+			taskId: someId
 	}
-	console.log(taskId)
-	console.log(user)
+	console.log(someId)
+	alert("Hello")
 	fetch("/matchDepartment", {
+		
 		method: 'POST',
 		headers: {
 			"Content-Type": "application/json",
@@ -19,10 +21,14 @@ submitBtn.addEventListener('click', () => {
 	.then((responseEntity) => responseEntity.json())
 	.then( (data) => {
 		if (data===false) {
-			// this user already exists!
 			alert("You must be in the same department as the task's assigned department")
 			window.location = "/dashboard"
 			
 		}
 	})
 })
+var someId
+function getId (theUniqueId) {
+	alert(theUniqueId)
+   someId = theUniqueId;
+}
