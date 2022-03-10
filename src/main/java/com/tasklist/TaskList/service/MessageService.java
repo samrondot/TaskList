@@ -11,6 +11,7 @@ import com.tasklist.TaskList.domain.Task;
 import com.tasklist.TaskList.domain.User;
 import com.tasklist.TaskList.dto.MessageDto;
 import com.tasklist.TaskList.repository.MessageRepository;
+import com.tasklist.TaskList.repository.UserRepository;
 
 @Service
 public class MessageService {
@@ -20,16 +21,18 @@ private MessageRepository messageRepo;
 private UserService userService;
 @Autowired
 private TaskService taskService;
+@Autowired
+private UserRepository userRepo;
 	
 	public void createMessage(MessageDto message) {
 		Message newMessage = new Message();
 		Task task = taskService.findById(message.getTaskId());
-		User user = userService.findByUsername(message.getUser());
-		System.out.println(user);
+		User user = userService.findById(message.getUserId());
+		user.getMessages().add(newMessage);
 		newMessage.setMessageContent(message.getMessage());
 		newMessage.setUser(user);
 		newMessage.setTask(task);
-		messageRepo.save(newMessage);
+		userRepo.save(user);
 	}
 
 	public List<MessageDto> getMessageBytaskId(Long taskId) {
@@ -37,7 +40,7 @@ private TaskService taskService;
 		List<MessageDto> messagesDto = new ArrayList<>();
 		for (Message message:messageList) {
 			MessageDto messageDto = new MessageDto();
-			User user = new User();
+			User user = message.getUser();
 			messageDto.setTaskId(message.getTask().getTaskId());
 			messageDto.setMessage(message.getMessageContent());
 			messageDto.setUser(user.getUsername());

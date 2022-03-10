@@ -10,6 +10,8 @@ public class MessageDto {
 	private String user;
 	@JsonProperty("taskId")
 	private Long taskId;
+	@JsonProperty("userId")
+	private Long userId;
 	
 	public String getMessage() {
 		return message;
@@ -28,6 +30,12 @@ public class MessageDto {
 	}
 	public void setTaskId(Long taskId) {
 		this.taskId = taskId;
+	}
+	public Long getUserId() {
+		return userId;
+	}
+	public void setUserId(Long userId) {
+		this.userId = userId;
 	}
 	
 	

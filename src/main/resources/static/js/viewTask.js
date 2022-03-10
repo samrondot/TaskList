@@ -4,13 +4,15 @@ const queryString = window.location.href;
 var url = window.location.pathname;
 let taskId = queryString.substring(queryString.lastIndexOf("/") +1, queryString.length)
 var id = url.substring(url.lastIndexOf('/'))
+var arr = url.split('/')
+arr = arr[arr.length-2]
 var user = sessionStorage.getItem("user")
 console.log(user)
 
 sendMessage.addEventListener('click',() => {
 	let newMessage = {
 		message: textBox.value,
-		user: user.userId,
+		userId: arr,
 		taskId: taskId
 		
 	}	
@@ -23,7 +25,7 @@ sendMessage.addEventListener('click',() => {
 		},
 		body: JSON.stringify(newMessage)
 	})
-	.then((response) => response.json)
+	.then((response) => response.json())
 		.then(message => {
 			getMessages()
 		})})
@@ -51,7 +53,7 @@ function displayMessages(messages){
 			mainContainer.innerHTML = "";
 		for(var i = 0; i < messages.length; i++){
 			var div = document.createElement("div");
-			div.innerHTML = user + ' : ' + messages[i].message;
+			div.innerHTML = messages[i].user +' : '+ messages[i].message;
 				mainContainer.appendChild(div)
 				console.log(messages[i])
 		}

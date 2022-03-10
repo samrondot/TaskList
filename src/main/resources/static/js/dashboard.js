@@ -1,4 +1,4 @@
-var submitBtn = document.getElementById("resolve")
+var submitBtn = document.querySelector('#complete')
 var user = sessionStorage.getItem("user")
 
 
@@ -32,3 +32,4 @@ function getId (theUniqueId) {
 	alert(theUniqueId)
    someId = theUniqueId;
 }
+

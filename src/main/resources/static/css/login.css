@@ -2,13 +2,20 @@
 	margin-top : 10px;
 	display: block;
 }
-
-
-#submitBtn{
+.btn{
 	padding: 5px;
 	color : white;
-	background-color: #00CED1;
+	background-color: blue;
 }
 #register{
 	font-weight: bold;
+}
+
+.label{
+	width: 200px;	
+	margin: 0;
+}
+.input{
+	width: 200px;
+	margin: 0;
 }
