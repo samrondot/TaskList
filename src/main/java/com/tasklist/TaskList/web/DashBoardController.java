@@ -71,15 +71,12 @@ public class DashBoardController {
 			Task task = taskService.findById(taskDto.getTaskId());
 			User user = userService.findById(task.getUser().getUserId());
 			if(task.getAssignedDept().equals(user.getDepartment())) {
+				taskService.delete(task.getTaskId(), user.getUserId());
 				return true;
 			}else {
 				return false;
 			}
 }
-	@PostMapping("/delete/{userId}/{taskId}")
-		private String deleteTask(@PathVariable Long taskId, @PathVariable Long userId) {
-		taskService.delete(taskId, userId);
-		return "redirect:/dashboard";
-	}
+
 	
 }

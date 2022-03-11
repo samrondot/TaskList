@@ -34,11 +34,8 @@
 						<td th:text = ${task.details}></td>
 						<td th:text = ${task.assignedDept}></td>
 						<td><a th:href="@{viewTask/{userId}/{taskId}(userId=${user.userId},taskId=${task.taskId})}"><button>Edit</button></a>
-						<td ><form method = "post" th:action ="@{/delete/{userId}/{taskId} (userId = ${user.userId},taskId=${task.taskId})}">
-						<input type = "hidden" th:name = "${_csrf.parameterName}" th:value = "${_csrf.token}"/>
-						<button type = "submit" name = "completeTask" th:id = "complete" th:attr="onclick=|getId('${task.taskId}')|" >Complete Task </button></form></td>					
-					</tr>
-									
+						<td><button name = "completeTask"  th:attr="onclick=|getId('${task.taskId}')|" th:id = ${task.taskId}>Complete Task </button></td>					
+					</tr>					
 				</table>
 			</div>
 	<script type = "text/javascript" src = "/js/dashboard.js" ></script>

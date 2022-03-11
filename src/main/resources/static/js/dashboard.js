@@ -1,13 +1,9 @@
-var submitBtn = document.querySelector('#complete')
+
 var user = sessionStorage.getItem("user")
-
-
-submitBtn.addEventListener('click', () => {
+function getId (theUniqueId) {
 	let userObj = {
-			taskId: someId
+			taskId: theUniqueId
 	}
-	console.log(someId)
-	alert("Hello")
 	fetch("/matchDepartment", {
 		
 		method: 'POST',
@@ -22,14 +18,10 @@ submitBtn.addEventListener('click', () => {
 	.then( (data) => {
 		if (data===false) {
 			alert("You must be in the same department as the task's assigned department")
+	
+		}else{
 			window.location = "/dashboard"
-			
 		}
 	})
-})
-var someId
-function getId (theUniqueId) {
-	alert(theUniqueId)
-   someId = theUniqueId;
 }
 
