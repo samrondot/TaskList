@@ -49,6 +49,8 @@ public class TaskService {
 		Task task = taskRepo.findByTaskId(taskId);
 		User user = userRepo.findByUserId(userId);
 		if(user.getDepartment().equals(task.getAssignedDept())) {
+			emailSender.SendEmail(user.getUsername(), "A Task Has Been Completed", "A Task has been completed"
+					+ " by " + user.getUsername());
 			taskRepo.delete(task);
 		}else {
 			System.out.println(user.getDepartment() + " does not equal " + task.getAssignedDept());
