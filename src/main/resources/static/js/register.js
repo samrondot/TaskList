@@ -1,6 +1,6 @@
 var submitBtn = document.querySelector('#submitBtn')
 var usernameTextBox = document.querySelector('#usernameTxtBox');
-var password = document.querySelector('#password')
+var password = document.querySelector('#inputPassword')
 
 
 var eyeIcon = document.querySelector('.fa-eye')

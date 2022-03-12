@@ -16,6 +16,9 @@
 	margin: 0;
 }
 .input{
-	width: 200px;
+	width: 220px;
 	margin: 0;
+}
+.form-control{
+	width: 60%;
 }

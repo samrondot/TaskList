@@ -1,4 +1,4 @@
-var sendMessage = document.querySelector("#submitBtn")
+var sendMessage = document.querySelector("#commentBtn")
 var textBox = document.querySelector("#comment")
 const queryString = window.location.href;
 var url = window.location.pathname;

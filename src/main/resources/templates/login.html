@@ -8,7 +8,7 @@
     	<script src="https://kit.fontawesome.com/647e4ec669.js" crossorigin="anonymous"></script>
 	</head>
 <!--  -->
-
+	<nav class="navbar navbar-expand-lg navbar-light bg-light">Welcome to TaskList</nav>
 		<div class = "container">
 		<form action="" method="post" id = "form">
 			<input type = "hidden" th:name = "${_csrf.parameterName}" th:value="${_csrf.token}"/>
@@ -36,7 +36,7 @@
 							<label id = "password" for="password">Password</label>
 						</div>
 						<div class = "input">
-							<input type="password" id="inputPassword" name="password" ><span id = "passwordEyeIcon" class="far fa-eye"></span>
+							<input type="password" id="inputPassword" name="password" ><i id = "passwordEyeIcon" class="far fa-eye"></i>
 						</div>
 						<p>
 						</p>
