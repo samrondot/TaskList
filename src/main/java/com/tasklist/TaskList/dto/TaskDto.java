@@ -20,6 +20,4 @@ public class TaskDto {
 	public void setTaskId(Long taskId) {
 		this.taskId = taskId;
 	}
-	
-
 }

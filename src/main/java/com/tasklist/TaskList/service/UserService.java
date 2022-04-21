@@ -21,7 +21,8 @@ public class UserService {
 		Authorities authority = new Authorities();
 		authority.setUser(user);
 		authority.setAuthority("ROLE_USER");
-		user.setPassword(user.getPassword());
+		String newPass = passwordEncoder.encode(user.getPassword());
+		user.setPassword(newPass);
 		user.setUsername(user.getUsername());
 		user.setDepartment(user.getDepartment());
 		user.getAuthorities().add(authority);
