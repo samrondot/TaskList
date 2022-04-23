@@ -65,7 +65,7 @@ public class User {
 	public void setTasks(List<Task> tasks) {
 		this.tasks = tasks;
 	}
-	@OneToMany(mappedBy = "user", fetch = FetchType.LAZY,cascade = CascadeType.ALL)
+	@OneToMany(mappedBy = "user",cascade = CascadeType.ALL)
 	public Set<Authorities> getAuthorities() {
 		return authorities;
 	}
