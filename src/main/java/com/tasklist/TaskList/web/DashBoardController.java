@@ -37,7 +37,7 @@ public class DashBoardController {
 	
 	@GetMapping("/dashboard")
 	public String getDashboard(@AuthenticationPrincipal User user, ModelMap model) {
-		userDetails.loadUserByUsername(user.getUsername());
+		//userDetails.loadUserByUsername(user.getUsername());
 		List<Task> allTasks = taskService.getAllTasks();
 		model.put("user", user);
 		model.put("tasks", allTasks);
