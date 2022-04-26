@@ -14,8 +14,7 @@ public class CustomSecurityUser extends User implements UserDetails	{
 	
 	public CustomSecurityUser(User user) {
 		
-		PasswordEncoder passwordEncoder = new BCryptPasswordEncoder();
-		this.setPassword(passwordEncoder.encode(user.getPassword()));
+		this.setPassword(user.getPassword());
 		this.setAuthorities(user.getAuthorities());
 		this.setUserId(user.getUserId());
 		this.setDepartment(user.getDepartment());

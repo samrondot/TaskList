@@ -30,25 +30,26 @@ protected void configure(AuthenticationManagerBuilder auth) throws Exception {
 	   .passwordEncoder(passwordEncoder);
 
 	}
-	@Override
-		protected void configure(HttpSecurity http) throws Exception {
-			http
-				.authorizeRequests()
-				.antMatchers("/admin/**").hasAnyRole("ADMIN")
-				.antMatchers("/exists").permitAll()
-				.antMatchers("/createTask/**").permitAll()
-				.antMatchers("/src/main/resources/**").permitAll()
-                .antMatchers("/js/*.js").permitAll()
-                .antMatchers("/css/*.css").permitAll()
-				.antMatchers("/register").permitAll()
-				.antMatchers("/messageSent").permitAll()
-				.antMatchers("/obtainMessages/**").permitAll()		
-				.anyRequest().hasAnyRole("USER").and()
-				.formLogin()
-					.loginPage("/login")
-					.defaultSuccessUrl("/dashboard")
-					.permitAll();
-			
+@Override
+protected void configure(HttpSecurity http) throws Exception {
+	http
+		.authorizeRequests()
+		.antMatchers("/admin/**").hasAnyRole("ADMIN")
+		.antMatchers("/exists").permitAll()
+		.antMatchers("/createTask/**").permitAll()
+		.antMatchers("/src/main/resources/**").permitAll()
+        .antMatchers("/js/*.js").permitAll()
+        .antMatchers("/css/*.css").permitAll()
+		.antMatchers("/register").permitAll()
+		.antMatchers("/messageSent").permitAll()
+		.antMatchers("/obtainMessages/**").permitAll()		
+		.anyRequest().hasAnyRole("USER").and()
+		.formLogin()
+			.loginPage("/login")
+			.defaultSuccessUrl("/dashboard")
+			.permitAll();
+	
+	
 			
 	}
 }
