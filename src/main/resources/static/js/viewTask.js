@@ -27,7 +27,7 @@ sendMessage.addEventListener('click',() => {
 	})
 	.then((response) => response.json())
 		.then(message => {
-			getMessages()
+			console.log(message)
 		})})
 		
 function getMessages(){
